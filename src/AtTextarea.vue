@@ -37,7 +37,7 @@ export default {
             return deleteMatch(name, chunk, suffix)
           })
           if (has) {
-            if (tag === '#') {
+            if (at && at === '#') {
               this.$emit('athashremoved', chunk)
             }
             this.$emit('atremoved', chunk)
@@ -135,7 +135,7 @@ export default {
       el.selectionStart = start
       el.focus() // textarea必须focus回来
       const t = itemName(list[cur]) + suffix
-      if (at === '#') {
+      if (at && at === '#') {
         this.$emit('athashadded', t)
       }
       this.$emit('atadded', t)
