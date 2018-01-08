@@ -37,6 +37,10 @@ export default {
             return deleteMatch(name, chunk, suffix)
           })
           if (has) {
+            if (tag === '#') {
+              this.$emit('athashremoved', chunk)
+            }
+            this.$emit('atremoved', chunk)
             el.value = el.value.slice(0, index) +
               el.value.slice(el.selectionEnd - 1)
             el.selectionStart = index + 1
@@ -131,6 +135,10 @@ export default {
       el.selectionStart = start
       el.focus() // textarea必须focus回来
       const t = itemName(list[cur]) + suffix
+      if (at === '#') {
+        this.$emit('athashadded', t)
+      }
+      this.$emit('atadded', t)
       this.insertText(t, el)
       this.handleInput()
     }
