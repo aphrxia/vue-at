@@ -135,10 +135,13 @@ export default {
       el.selectionStart = start
       el.focus() // textarea必须focus回来
       const t = itemName(list[cur]) + suffix
+      let txtval = list[cur].id ?
+                   list[cur].id :
+                   t
       if (at && at === '#') {
-        this.$emit('athashadded', t)
+        this.$emit('athashadded', txtval)
       }
-      this.$emit('atadded', t)
+      this.$emit('atadded', txtval)
       this.insertText(t, el)
       this.handleInput()
     }
